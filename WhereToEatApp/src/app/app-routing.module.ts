@@ -4,17 +4,26 @@ import { LoginPageComponent } from './pages/login-page/login.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AuthGuard } from './auth/auth-guard';
+import { ForgotPasswordPageComponent } from './pages/forgot-password-page/forgot-password-page.component';
+import { AutoLogin } from './auth/auto-login';
 
 
 const routes: Routes = [
   // Public routes (no authentication required)
   {
     path: 'login',
-    component: LoginPageComponent
+    component: LoginPageComponent,
+    canActivate: [AutoLogin]
   },
   {
     path: 'signup',
-    component: SignupPageComponent
+    component: SignupPageComponent,
+    canActivate: [AutoLogin]
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordPageComponent,
+    canActivate: [AutoLogin]
   },
   {
     path: 'home',

@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/home">Where To Eat</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li *ngIf="isLoggedIn()" class="nav-item">
+            <a class="nav-link" routerLink="/home">Home</a>
+          </li>
+          <!-- Add more authenticated navigation links here -->
+          <li *ngIf="isLoggedIn()" class="nav-item pointer">
+            <a class="nav-link" (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
