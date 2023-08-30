@@ -1,0 +1,35 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginPageComponent } from './pages/login-page/login.component';
+import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { AuthGuard } from './auth/auth-guard';
+
+
+const routes: Routes = [
+  // Public routes (no authentication required)
+  {
+    path: 'login',
+    component: LoginPageComponent
+  },
+  {
+    path: 'signup',
+    component: SignupPageComponent
+  },
+  {
+    path: 'home',
+    component: HomePageComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
