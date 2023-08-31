@@ -24,3 +24,12 @@ Ibrahim Alkuwaifi brings a diverse set of skills to the team, including:
 - **Web Development:** React, Angular
 - **Markup and Styling:** XML, HTML5, CSS
 - **Data Formats:** JSON
+
+- This file was modified and updated by **Mohammed Abdul Wahid**.
+- ### Mohammed Abdul Wahid
+- ## Student ID - 11600299
+
+- **Programming Languages:** C/C++, Python, Java, Javascript
+- **Databases:** MySQL, Amazon Web Services, Oracle
+- **Web Development:** AngularJS, Node.js, C#
+- **Markup and Styling:** HTML5, CSS, XML
