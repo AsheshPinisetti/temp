@@ -39,3 +39,13 @@ Ibrahim Alkuwaifi brings a diverse set of skills to the team, including:
 - **Databases:** MySQL
 - **Web Development:** React, Angular
 - **Markup and Styling:** HTML5, CSS
+
+
+
+### Mohammad khaja's Skills
+
+- **Programming Languages:** C/C++, Java, Python, Javascript
+- **Databases:** MySQL, AWS, NoSQL, Firebase, MongoDB, Cassandra, GCP
+- **Web Development:** Drupal 7, OMNI by ModernCampus, HTML boilerplate, CSS, HTML, JS and PHP
+- **Blockchain:** Ethereum, Solidity
+- **Cybersecurity:** OWASP, Penetration Testing
