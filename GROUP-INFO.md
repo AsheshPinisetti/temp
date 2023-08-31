@@ -39,3 +39,10 @@ Ibrahim Alkuwaifi brings a diverse set of skills to the team, including:
 - **Databases:** MySQL
 - **Web Development:** React, Angular
 - **Markup and Styling:** HTML5, CSS
+
+- ### Sai Kumar Gurram
+
+- **Programming Languages:** Java, C, Typescript
+- **Database :** MySQL, Oracle
+- **Web Development:** Angular
+- **Markup and Styling:** HTML, CSS
