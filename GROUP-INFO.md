@@ -34,7 +34,7 @@ Ibrahim Alkuwaifi brings a diverse set of skills to the team, including:
 -  This file was modified and updated by **Mohammed Abdul Wahid**.
 
 -  ### Vishal Kandunuri
--
+
 - **Programming Languages:** C/C++, Java, Python, Javascript
 - **Databases:** MySQL
 - **Web Development:** React, Angular
