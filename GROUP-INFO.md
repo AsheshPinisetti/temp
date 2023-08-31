@@ -25,7 +25,7 @@ Ibrahim Alkuwaifi brings a diverse set of skills to the team, including:
 - **Markup and Styling:** XML, HTML5, CSS
 - **Data Formats:** JSON
 
-- ### Mohammed Abdul Wahid
+### Mohammed Abdul Wahid
 
 - **Programming Languages:** C/C++, Python, Java, Javascript
 - **Databases:** MySQL, Amazon Web Services, Oracle
@@ -40,7 +40,7 @@ Ibrahim Alkuwaifi brings a diverse set of skills to the team, including:
 - **Web Development:** React, Angular
 - **Markup and Styling:** HTML5, CSS
 
-- ### Sai Kumar Gurram
+### Sai Kumar Gurram
 
 - **Programming Languages:** Java, C, Typescript
 - **Database :** MySQL, Oracle
@@ -55,3 +55,12 @@ Ibrahim Alkuwaifi brings a diverse set of skills to the team, including:
 - **Web Development:** Drupal 7, OMNI by ModernCampus, HTML boilerplate, CSS, HTML, JS and PHP
 - **Blockchain:** Ethereum, Solidity
 - **Cybersecurity:** OWASP, Penetration Testing
+
+
+### Ashesh kumar Pinisetti/Skills:
+
+- **Programming Languages:** C, C#, Java, Python, Javascript
+- **Databases:** MySQL
+- **Web Development:** CSS, HTML, JS and PHP
+- **Cloud:** Azure(ADO), Gitlab
+- **Tools:** Postman, Configuration manager, Apache directory, SSMS
