@@ -32,3 +32,10 @@ Ibrahim Alkuwaifi brings a diverse set of skills to the team, including:
 - **Web Development:** AngularJS, Node.js, C#
 - **Markup and Styling:** HTML5, CSS, XML
 -  This file was modified and updated by **Mohammed Abdul Wahid**.
+
+-  ### Vishal Kandunuri
+-
+- **Programming Languages:** C/C++, Java, Python, Javascript
+- **Databases:** MySQL
+- **Web Development:** React, Angular
+- **Markup and Styling:** HTML5, CSS
