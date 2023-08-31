@@ -33,7 +33,7 @@ Ibrahim Alkuwaifi brings a diverse set of skills to the team, including:
 - **Markup and Styling:** HTML5, CSS, XML
 -  This file was modified and updated by **Mohammed Abdul Wahid**.
 
--  ### Vishal Kandunuri
+### Vishal Kandunuri
 
 - **Programming Languages:** C/C++, Java, Python, Javascript
 - **Databases:** MySQL
