@@ -25,7 +25,7 @@ Ibrahim Alkuwaifi brings a diverse set of skills to the team, including:
 - **Markup and Styling:** XML, HTML5, CSS
 - **Data Formats:** JSON
 
-- ### Mohammed Abdul Wahid (Student ID - 11600299)
+- ### Mohammed Abdul Wahid
 
 - **Programming Languages:** C/C++, Python, Java, Javascript
 - **Databases:** MySQL, Amazon Web Services, Oracle
