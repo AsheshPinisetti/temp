@@ -69,4 +69,10 @@ Ibrahim Alkuwaifi brings a diverse set of skills to the team, including:
 - **Programming Languages:** Java, Python, Javascript, C
 - **Databases:** MySQL, Oracle, PL/SQL
 - **Web Development:**  HTML, CSS, JS
-- **Cloud:** AWS, Oracle 
+- **Cloud:** AWS, Oracle
+
+### Gouthami Gongidi's Skills
+- **Programming Languages:** Java, Javascript, C/C++
+- **Databases:** MySQL
+- **Web Development:**  HTML, CSS
+- **Cloud:** AWS
