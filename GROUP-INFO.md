@@ -64,3 +64,9 @@ Ibrahim Alkuwaifi brings a diverse set of skills to the team, including:
 - **Web Development:** CSS, HTML, JS and PHP
 - **Cloud:** Azure(ADO), Gitlab
 - **Tools:** Postman, Configuration manager, Apache directory, SSMS
+
+### Mallikarjun Narra's Skills
+- **Programming Languages:** Java, Python, Javascript, C
+- **Databases:** MySQL, Oracle, PL/SQL
+- **Web Development:**  HTML, CSS, JS
+- **Cloud:** AWS, Oracle 
