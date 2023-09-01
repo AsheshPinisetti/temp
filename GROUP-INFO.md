@@ -64,3 +64,11 @@ Ibrahim Alkuwaifi brings a diverse set of skills to the team, including:
 - **Web Development:** CSS, HTML, JS and PHP
 - **Cloud:** Azure(ADO), Gitlab
 - **Tools:** Postman, Configuration manager, Apache directory, SSMS
+
+
+  
+### Teja Peddi skills:
+
+- **Programming Languages:** python, C
+- **Database :** MySQL, Oracle
+- **Markup and Styling:** HTML, CSS
