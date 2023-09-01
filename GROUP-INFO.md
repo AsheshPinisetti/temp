@@ -76,3 +76,9 @@ Ibrahim Alkuwaifi brings a diverse set of skills to the team, including:
 - **Databases:** MySQL
 - **Web Development:**  HTML, CSS
 - **Cloud:** AWS
+
+### Teja Peddi skills:
+
+- **Programming Languages:** python, C
+- **Database :** MySQL, Oracle
+- **Markup and Styling:** HTML, CSS
