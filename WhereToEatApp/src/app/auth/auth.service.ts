@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { NotificationService } from '../core/services/notification.service';
 import { Subscription } from 'rxjs';
+import { FirebaseError } from 'firebase/app';
 
 @Injectable({
     providedIn: 'root'
@@ -40,6 +41,10 @@ import { Subscription } from 'rxjs';
       return this.afAuth
         .signInWithEmailAndPassword(email, password)
         .then((result) => {
+          if(!result.user?.emailVerified){
+            const customError = new FirebaseError('auth/user-disabled', 'This account has not been verified.');
+            throw customError;
+          }
           this.SetUserData(result.user);
           // Unsubscribe from previous authState subscription
           if (this.authStateSubscription) {
@@ -55,6 +60,7 @@ import { Subscription } from 'rxjs';
         })
         .catch((error) => {
           const errorMessage = this.getErrorMessageForCode(error.code);
+          this.SignOut();
           this.notificationService.showNotification('error', errorMessage);
         });
     }
@@ -63,6 +69,9 @@ import { Subscription } from 'rxjs';
       return this.afAuth
         .createUserWithEmailAndPassword(email, password)
         .then((result) => {
+          if (this.authStateSubscription) {
+            this.authStateSubscription.unsubscribe();
+          }
           this.notificationService.showNotification('success', 'Account registered successfully. Check your inbox to verify your email.');
           this.SendVerificationEmail();
           this.SetUserData(result.user);
@@ -127,7 +136,7 @@ import { Subscription } from 'rxjs';
         case 'auth/invalid-email':
           return 'Invalid email address.';
         case 'auth/user-disabled':
-          return 'This account has been disabled.';
+          return 'This account has not been verified.';
         case 'auth/user-not-found':
           return 'User not found. Please check your email and password.';
         case 'auth/wrong-password':

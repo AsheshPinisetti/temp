@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class HomePageComponent {
 
+  constructor(public afAuth: AngularFireAuth){}
 }
