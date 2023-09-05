@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -8,16 +9,30 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginPageComponent {
-  email: string = '';
-  password: string = '';
+
+
+  loginForm: FormGroup;
+  loading = false;
 
   constructor(
     private authService: AuthService,
-    private router: Router,
+    private formBuilder: UntypedFormBuilder,
   ) { }
-  ngOnInit() { }
+
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+        username: ['', [Validators.required, Validators.email]],
+        password: ['', Validators.required]
+    });
+  }
+
+  get f() { return this.loginForm?.controls; }
 
   login() {
-    this.authService.SignIn(this.email, this.password);
+    this.loading = true;
+    this.authService.SignIn(this.f?.['username']?.value, this.f?.['password']?.value)
+      .finally(() => {
+        this.loading = false;
+      });
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 
@@ -8,16 +9,26 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./signup-page.component.scss']
 })
 export class SignupPageComponent {
-  email: string = '';
-  password: string = '';
+  registerForm: FormGroup;
+  loading = false;
 
   constructor(
     private authService: AuthService,
-    private router: Router,
+    private formBuilder: UntypedFormBuilder,
   ) { }
-  ngOnInit() { }
+  ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+  });
+  }
 
+  get f() { return this.registerForm?.controls; }
   register(){
-    this.authService.SignUp(this.email, this.password);
+    this.loading = true;
+    this.authService.SignUp(this.f?.['username']?.value, this.f?.['password']?.value)
+      .finally(() => {
+        this.loading = false;
+      });
   }
 }
