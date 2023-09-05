@@ -17,6 +17,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from 'src/environments/environment';
 import { ForgotPasswordPageComponent } from './pages/forgot-password-page/forgot-password-page.component';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
+import { LoadingSpinnerComponent } from './core/components/loading-spinner/loading-spinner.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -67,6 +68,7 @@ const customNotifierOptions: NotifierOptions = {
     HomePageComponent,
     TopbarComponent,
     ForgotPasswordPageComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
