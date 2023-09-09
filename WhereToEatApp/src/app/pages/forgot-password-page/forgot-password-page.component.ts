@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -7,15 +8,25 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./forgot-password-page.component.scss']
 })
 export class ForgotPasswordPageComponent {
-  email: string = '';
+  passwordForm: FormGroup;
+  loading = false;
   constructor(
-    public authService: AuthService
+    public authService: AuthService,
+    private formBuilder: UntypedFormBuilder,
   ) { }
 
   ngOnInit() {
+    this.passwordForm = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.email]],
+    });
   }
+  get f() { return this.passwordForm?.controls; }
 
   resetPassword(){
-    this.authService.ForgotPassword(this.email);
+    this.loading = true;
+    this.authService.ForgotPassword(this.f?.['username']?.value)
+    .finally(() =>{
+      this.loading = false;
+    });
   }
 }

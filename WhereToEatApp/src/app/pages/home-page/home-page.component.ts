@@ -9,5 +9,5 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class HomePageComponent {
 
-  constructor(public afAuth: AngularFireAuth){}
+  constructor(public afAuth: AngularFireAuth, public authService: AuthService){}
 }

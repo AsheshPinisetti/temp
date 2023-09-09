@@ -7,7 +7,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { NotificationService } from '../core/services/notification.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription, of, switchMap } from 'rxjs';
 import { FirebaseError } from 'firebase/app';
 
 @Injectable({
@@ -16,6 +16,7 @@ import { FirebaseError } from 'firebase/app';
   export class AuthService {
 
     userData: any; // Save logged in user data
+    user$: Observable<User| null | undefined>;
     authStateSubscription: Subscription | undefined;
     constructor(
       public afs: AngularFirestore, // Inject Firestore service
@@ -35,7 +36,19 @@ import { FirebaseError } from 'firebase/app';
           JSON.parse(localStorage.getItem('user')!);
         }
       });
+
+      this.user$ = this.afAuth.authState.pipe(
+        switchMap(user => {
+          if(user) {
+            return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+          }
+          else{
+            return of(null);
+          }
+        })
+      );
     }
+
     // Sign in with email/password
     SignIn(email: string, password: string) {
       return this.afAuth
@@ -45,7 +58,6 @@ import { FirebaseError } from 'firebase/app';
             const customError = new FirebaseError('auth/user-disabled', 'This account has not been verified.');
             throw customError;
           }
-          this.SetUserData(result.user);
           // Unsubscribe from previous authState subscription
           if (this.authStateSubscription) {
             this.authStateSubscription.unsubscribe();

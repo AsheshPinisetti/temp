@@ -4,7 +4,7 @@
         <div class="card-body text-center">
         <h1 class="card-title">Welcome back!</h1>
         <p class="card-text">
-            Hello, <strong>{{ (afAuth.authState | async)?.email }}</strong>!
+            Hello, <strong>{{ (authService.user$ | async)?.displayName }}</strong>!
         </p>
         </div>
     </div>
