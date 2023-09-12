@@ -1,4 +1,4 @@
-# ***Project Details***
+# ***Project Details*** :sparkles:
 - ***Deliverable_1***: 
   - [Report](./Deliverable_1/Report_Deliverable_1.pdf)
   - [PPT](./Deliverable_1/PPT_Deliverable_1.pdf)
