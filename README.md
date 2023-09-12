@@ -4,6 +4,7 @@ software-engineering
  |--->WhereToEatApp
 	|
 	|--->.vscode
+ 	|--->Deliverable_1
 	|--->src
 	      |--->app
 	      |	    |--->auth
