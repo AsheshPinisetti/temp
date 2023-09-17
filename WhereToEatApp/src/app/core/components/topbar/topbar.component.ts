@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class TopbarComponent {
 
-  constructor(private authService: AuthService) {}
+  constructor(public authService: AuthService) {}
 
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn;
@@ -16,5 +16,11 @@ export class TopbarComponent {
 
   logout() {
     this.authService.SignOut()
+  }
+
+  isNavbarExpanded = false;
+
+  toggleNavbar() {
+    this.isNavbarExpanded = !this.isNavbarExpanded;
   }
 }

@@ -1,12 +1,73 @@
 <div class="row justify-content-center">
-    <div class="col-md-6">
-    <div class="card">
-        <div class="card-body text-center">
-        <h1 class="card-title">Welcome back!</h1>
-        <p class="card-text">
-            Hello, <strong>{{ (authService.user$ | async)?.displayName }}</strong>!
-        </p>
+    <div class="col">
+        <div class="row m-3">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5>New Hangout</h5>
+                            <button class="btn btn-dark float-right">Add <i class="bi bi-plus-lg"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body ">
+                        <form *ngIf="!loading" [formGroup]="hangoutForm" (ngSubmit)="createNewHangout()">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="name" class="mb-1">Hangout Name</label>
+                                    <input placeholder="Enter your hangout name" type="text" formControlName="name" class="form-control"/>
+                                </div>
+                                <!-- <div class="col-6">
+                                    <label for="name" class="mb-1">Hangout Name</label>
+                                    <input placeholder="Enter your hangout name" type="text" formControlName="name" class="form-control"/>
+                                </div>
+                                <div class="col-6 m-3">
+                                </div> -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="row m-3">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Current Hangouts
+                    </div>
+                    <div class="card-body text-center">
+                    <h1 class="card-title">Welcome back!</h1>
+                    <p class="card-text">
+                        Hello, <strong>{{ (authService.user$ | async)?.displayName }}</strong>!
+                    </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Past Hangouts
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <a href="/" class="btn btn-outline-dark btn-block">Foodie Adventure Hangout</a>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="/" class="btn btn-outline-dark btn-block">Movie Night Out</a>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="/" class="btn btn-outline-dark btn-block">Coffee and Conversation</a>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="/" class="btn btn-outline-dark btn-block">Sushi Lovers Gathering</a>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="/" class="btn btn-outline-dark btn-block">Weekend Brunch Crew</a>
+                            </li>
+                          </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

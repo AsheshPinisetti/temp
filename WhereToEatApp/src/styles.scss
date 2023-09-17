@@ -1,2 +1,33 @@
+.card {
+    border: none; /* Remove the default card border */
+    border-radius: 8px; /* Add rounded corners */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+.card-header {
+    background-color: #f8f9fa; /* Customize the header background color */
+    border-bottom: none; /* Remove the default header border */
+    padding: 1rem; /* Add some padding to the header */
+}
+
+.card-title {
+    font-size: 1.25rem; /* Customize the title font size */
+    margin-bottom: 0.5rem; /* Add spacing between the title and content */
+}
+
+.card-body {
+    padding: 1rem; /* Add padding to the card content */
+}
+
+/* Customize the card footer if needed */
+.card-footer {
+    background-color: #f8f9fa; /* Customize the footer background color */
+    border-top: none; /* Remove the default footer border */
+    padding: 1rem; /* Add some padding to the footer */
+}
+
+
+
 @import 'bootstrap/scss/bootstrap';
 @import 'node_modules/angular-notifier/styles'
+

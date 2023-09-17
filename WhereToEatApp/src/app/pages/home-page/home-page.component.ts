@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { FormGroup, UntypedFormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -9,5 +10,10 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class HomePageComponent {
 
-  constructor(public afAuth: AngularFireAuth, public authService: AuthService){}
+  hangoutForm: FormGroup;
+  loading = false;
+
+  constructor(public afAuth: AngularFireAuth, public authService: AuthService, private formBuilder: UntypedFormBuilder,){}
+
+  createNewHangout(){}
 }
