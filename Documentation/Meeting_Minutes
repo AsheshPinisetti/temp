@@ -54,14 +54,14 @@ Agenda items or topics discussed –
 
 Action items or tasks assigned – 
 •	Project Description
-• Requirements
+•   Requirements
 •	Creating Readme file
 •	Creating Directories
 
 Decisions made during the meeting – 
 •	Distributed tasks
 •	Google docs for deliverable
-• Objectives
+•   Objectives
 
 Meeting date and time – Mon, Sep 11 2023 06:00 PM Central Time (US and Canada)
 https://zoom.us/j/94944121926?pwd=Lzd0M1BHNjZtU3lRZG5zTlZOVXJ3QT09
@@ -80,13 +80,13 @@ List of attendees – 9
 Agenda items or topics discussed – 
 •	Introduction
 •	Scope of the project
-• Design and development
+•   Design and development
 •	Key Features and Requirements
-• Risk Management	
+•   Risk Management	
 
 Action items or tasks assigned – 
 •	Project Management Lead: Ibrahim Alkuwaif
-• Requirements Lead: Gouthami Gongidi
+•   Requirements Lead: Gouthami Gongidi
 •	Desgin Lead: Ashesh Kumar
 •	Implementation Lead:
     Front End - Gurram Sai Kumar
@@ -94,11 +94,12 @@ Action items or tasks assigned –
 •	System Admin Lead:Mohammad Khaja Moinuddin 
 •	Testing Lead: Vishal Kandunuri
 •	Presenatation Lead: Mohamed Abdul Wahid
+•   Documentation Leas: Teja Peddi
 
 Decisions made during the meeting – 
 •	Using Gantt Chart for planning
 •	Deliverable 1
-• Designing Front End for login page
+•   Designing Front End for login page
 •	PPT and Video
 
 Meeting date and time – Sun, Sept 17 2023 11:00 AM America (GMT-6:00)
@@ -126,7 +127,7 @@ Action items or tasks assigned –
 •	Suggestions
 
 Decisions made during the meeting – 
-• Deployment Environment	
+•   Deployment Environment	
 •	Security Aspects of Data
 •	Applications Functional Aspects
 •	Implement Feedback System
