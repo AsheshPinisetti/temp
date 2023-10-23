@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -17,7 +16,7 @@ export class HomePageComponent {
   loading = false;
   activeHangouts$: Observable<Hangout[]>
   pastHangouts$: Observable<Hangout[]>
-  constructor(public afAuth: AngularFireAuth,
+  constructor(
               public authService: AuthService,
               private formBuilder: UntypedFormBuilder,
               private hangoutService: HangoutService){}
