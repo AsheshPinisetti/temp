@@ -18,6 +18,7 @@ import { environment } from 'src/environments/environment';
 import { ForgotPasswordPageComponent } from './pages/forgot-password-page/forgot-password-page.component';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { LoadingSpinnerComponent } from './core/components/loading-spinner/loading-spinner.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -75,6 +76,7 @@ const customNotifierOptions: NotifierOptions = {
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     FormsModule,
     NgbModule,
     AngularFireAuthModule,

@@ -26,7 +26,8 @@
     padding: 1rem; /* Add some padding to the footer */
 }
 
-
+$enable-rounded: false;
+$primary: #292b2c;
 
 @import 'bootstrap/scss/bootstrap';
 @import 'node_modules/angular-notifier/styles'

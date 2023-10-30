@@ -1,0 +1,15 @@
+/* Define the fixed height for the container */
+.restaurants-container {
+    height: 500px;
+    overflow-y: auto;
+}
+
+.restaurants-card{
+    width: 25%;
+}
+.card-img-top {
+    width: 100%;  /* or any custom width */
+    height: 200px;  /* or any custom height */
+    object-fit: cover;
+  }
+  

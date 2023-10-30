@@ -54,28 +54,37 @@ import { FirebaseError } from 'firebase/app';
       return this.afAuth
         .signInWithEmailAndPassword(email, password)
         .then((result) => {
-          if(!result.user?.emailVerified){
+          if (!result.user?.emailVerified) {
+            this.unsubscribeAuthState(); // Unsubscribe if already subscribed
             const customError = new FirebaseError('auth/user-disabled', 'This account has not been verified.');
             throw customError;
           }
-          // Unsubscribe from previous authState subscription
-          if (this.authStateSubscription) {
-            this.authStateSubscription.unsubscribe();
-          }
-          // Subscribe to authState once and handle login logic
-          this.authStateSubscription = this.afAuth.authState.subscribe((user) => {
-            if (user) {
-              this.notificationService.showNotification('success', 'Welcome back!');
-              this.router.navigate(['home']);
-            }
-          });
+          this.handleSuccessfulLogin();
         })
         .catch((error) => {
+          this.unsubscribeAuthState(); // Unsubscribe if already subscribed
           const errorMessage = this.getErrorMessageForCode(error.code);
           this.SignOut();
           this.notificationService.showNotification('error', errorMessage);
         });
     }
+
+    handleSuccessfulLogin() {
+      this.unsubscribeAuthState(); // Unsubscribe if already subscribed
+      this.authStateSubscription = this.afAuth.authState.subscribe((user) => {
+        if (user) {
+          this.notificationService.showNotification('success', 'Welcome back!');
+          this.router.navigate(['home']);
+        }
+      });
+    }
+
+    unsubscribeAuthState() {
+      if (this.authStateSubscription) {
+        this.authStateSubscription.unsubscribe();
+      }
+    }
+
     // Sign up with email/password
     SignUp(email: string, password: string) {
       return this.afAuth

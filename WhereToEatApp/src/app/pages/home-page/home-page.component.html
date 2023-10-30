@@ -9,7 +9,8 @@
                             <button class="btn btn-dark float-right" [disabled]="!this.hangoutForm.valid" (click)="createNewHangout()">Add <i class="bi bi-plus-lg"></i></button>
                         </div>
                     </div>
-                    <div class="card-body ">
+                    <div class="card-body">
+                        <app-loading-spinner *ngIf="loading"></app-loading-spinner>
                         <form *ngIf="!loading" [formGroup]="hangoutForm">
                             <div class="row m-3">
                                 <div class="col-6">
@@ -18,19 +19,39 @@
                                 </div>
                                 <div class="col-6">
                                     <label for="location" class="mb-1">Location</label>
-                                    <input type="text" placeholder="Enter location of the hangout" formControlName="location" class="form-control"/>
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Enter location of the hangout" formControlName="location" class="form-control"/>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary " type="button" (click)="search(hangoutForm.value?.location)">Search</button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-12 mt-2">
                                     <label for="description" class="mb-1">Description</label>
                                     <textarea type="text" formControlName="description" class="form-control"> </textarea>
                                 </div>
-                                <div class="col-6 m-3">
+                                <div class="col-12 mt-2">
+                                    <label for="description" class="mb-1">Restaurants <span *ngIf="hangoutForm.value?.location">in {{hangoutForm.value?.location}}</span></label>
+                                    <div class="restaurants-container row">
+                                        <div *ngFor="let restaurant of restaurants" class="restaurants-card my-3">
+                                            <div class="card">
+                                              <img [src]="restaurant.img_url" class="card-img-top" alt="{{restaurant.name}}">
+                                              <div class="card-body">
+                                                <a [href]="restaurant.url" target="_blank"><h5 class="card-title">{{restaurant.name}}</h5></a>
+                                                <p class="card-text">{{restaurant.address}}</p>
+                                                <p class="card-text">{{restaurant.categories}}</p>
+                                                <a [href]="restaurant.url" target="_blank" class="btn btn-primary">Add Restaurant</a>
+                                              </div>
+                                            </div>
+                                          </div>
+                                    </div>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="row m-3">
             <div class="col-md-6">

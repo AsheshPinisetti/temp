@@ -11,14 +11,15 @@ export class HangoutService {
   constructor(private firestore: AngularFirestore,) { }
 
   // Create a new hangout
-  public async createHangout(hangout: Hangout) {
-
+  public async createHangout(hangout: Hangout): Promise<boolean> {
     try {
       await this.firestore.collection('hangouts').add(hangout);
+      return true;
     } catch (error) {
-      console.error('Error creating hangout:', error);
+      return false;
     }
   }
+
 
   // Generate a unique join ID for hangout
   generateJoinId() {
