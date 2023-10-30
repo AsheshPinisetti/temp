@@ -22,7 +22,7 @@ export class HomePageComponent {
 
   activeHangouts$: Observable<Hangout[]>
   pastHangouts$: Observable<Hangout[]>
-  constructor(public afAuth: AngularFireAuth,
+  constructor(
               public authService: AuthService,
               private formBuilder: UntypedFormBuilder,
               private hangoutService: HangoutService,
