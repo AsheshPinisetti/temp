@@ -19,14 +19,15 @@ export class SignupPageComponent {
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      name: ['', [Validators.required]]
   });
   }
 
   get f() { return this.registerForm?.controls; }
   register(){
     this.loading = true;
-    this.authService.SignUp(this.f?.['username']?.value, this.f?.['password']?.value)
+    this.authService.SignUp(this.f?.['username']?.value, this.f?.['password']?.value, this.f?.['name']?.value)
       .finally(() => {
         this.loading = false;
       });

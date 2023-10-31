@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="card-header">
+        Active Hangouts
+    </div>
+    <div class="card-body">
+        <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+        <div *ngIf="!loading">
+            <div class="text-center">
+                <p  *ngIf="!(activeHangouts$|async)?.length">No active hangouts</p>
+            </div>
+            <ul class="list-group list-group-flush" *ngIf="(activeHangouts$|async)?.length">
+                <li *ngFor="let hangout of (activeHangouts$|async)" class="list-group-item">
+                    <a [routerLink]="['/hangout', hangout.id]" class="btn btn-outline-dark btn-block">{{hangout?.name}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

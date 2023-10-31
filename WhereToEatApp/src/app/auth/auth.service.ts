@@ -86,7 +86,7 @@ import { FirebaseError } from 'firebase/app';
     }
 
     // Sign up with email/password
-    SignUp(email: string, password: string) {
+    SignUp(email: string, password: string, name: string) {
       return this.afAuth
         .createUserWithEmailAndPassword(email, password)
         .then((result) => {
@@ -95,7 +95,7 @@ import { FirebaseError } from 'firebase/app';
           }
           this.notificationService.showNotification('success', 'Account registered successfully. Check your inbox to verify your email.');
           this.SendVerificationEmail();
-          this.SetUserData(result.user);
+          this.SetUserData(result.user, name);
         })
         .catch((error) => {
           const errorMessage = this.getErrorMessageForCode(error.code);
@@ -129,14 +129,14 @@ import { FirebaseError } from 'firebase/app';
     /* Setting up user data when sign in with username/password,
     sign up with username/password and sign in with social auth
     provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-    SetUserData(user: any) {
+    SetUserData(user: any, name: string) {
       const userRef: AngularFirestoreDocument<any> = this.afs.doc(
         `users/${user.uid}`
       );
       const userData: User = {
         uid: user.uid,
         email: user.email,
-        displayName: user.displayName,
+        displayName: name,
         photoURL: user.photoURL,
         emailVerified: user.emailVerified,
       };

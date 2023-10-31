@@ -2,95 +2,17 @@
     <div class="col">
         <div class="row m-3">
             <div class="col">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h5>New Hangout</h5>
-                            <button class="btn btn-dark float-right" [disabled]="!this.hangoutForm.valid" (click)="createNewHangout()">Add <i class="bi bi-plus-lg"></i></button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <app-loading-spinner *ngIf="loading"></app-loading-spinner>
-                        <form *ngIf="!loading" [formGroup]="hangoutForm">
-                            <div class="row m-3">
-                                <div class="col-6">
-                                    <label for="name" class="mb-1">Name</label>
-                                    <input placeholder="Enter your hangout name" type="text" formControlName="name" class="form-control"/>
-                                </div>
-                                <div class="col-6">
-                                    <label for="location" class="mb-1">Location</label>
-                                    <div class="input-group">
-                                        <input type="text" placeholder="Enter city, state, or zip code." formControlName="location" class="form-control"/>
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary " type="button" (click)="search(hangoutForm.value?.location)">Search</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 mt-2">
-                                    <label for="description" class="mb-1">Description</label>
-                                    <textarea type="text" formControlName="description" class="form-control"> </textarea>
-                                </div>
-                                <div class="col-12 mt-2">
-                                    <label *ngIf="restaurants.length > 0" for="description" class="mb-1">Restaurants <span *ngIf="hangoutForm.value?.location">in {{hangoutForm.value?.location}}</span></label>
-                                    <div *ngIf="restaurants.length == 0">
-                                        <div class="h5">Enter a location to pick restaurants</div>
-                                    </div>
-                                    <div *ngIf="restaurants.length > 0" class="restaurants-container row">
-                                        <div *ngFor="let restaurant of restaurants" class="restaurants-card my-3">
-                                            <div class="card">
-                                              <img [src]="restaurant.img_url" class="card-img-top" alt="{{restaurant.name}}">
-                                              <div class="card-body">
-                                                <a [href]="restaurant.url" target="_blank"><h5 class="card-title">{{restaurant.name}}</h5></a>
-                                                <p class="card-text">{{restaurant.address}}</p>
-                                                <p class="card-text">{{restaurant.categories}}</p>
-                                                <button class="btn btn-primary" *ngIf="!restaurant.added" (click)="addRestaurant(restaurant)">Add Restaurant</button>
-                                                <button class="btn btn-primary" *ngIf="restaurant.added" (click)="removeRestaurant(restaurant)">Remove Restaurant</button>
-                                              </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <app-join-hangout></app-join-hangout>
+                <app-new-hangout-card></app-new-hangout-card>
             </div>
 
         </div>
         <div class="row m-3">
             <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        Current Hangouts
-                    </div>
-                    <div class="card-body">
-                        <div class="text-center">
-                            <p  *ngIf="!(activeHangouts$|async)?.length">No past hangouts</p>
-                        </div>
-                        <ul class="list-group list-group-flush" *ngIf="(activeHangouts$|async)?.length">
-                            <li *ngFor="let hangout of (activeHangouts$|async)" class="list-group-item">
-                              <a href="/" class="btn btn-outline-dark btn-block">{{hangout?.name}}</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <app-active-hangouts-card></app-active-hangouts-card>
             </div>
             <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        Past Hangouts
-                    </div>
-                    <div class="card-body">
-                        <div class="text-center">
-                            <p  *ngIf="!(pastHangouts$|async)?.length">No past hangouts</p>
-                        </div>
-                        <ul class="list-group list-group-flush" *ngIf="(pastHangouts$|async)?.length">
-                            <li *ngFor="let hangout of (pastHangouts$|async)" class="list-group-item">
-                              <a href="/" class="btn btn-outline-dark btn-block">{{hangout?.name}}</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <app-past-hangouts-card></app-past-hangouts-card>
             </div>
         </div>
     </div>

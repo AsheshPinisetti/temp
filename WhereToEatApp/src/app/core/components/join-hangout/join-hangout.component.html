@@ -1,0 +1,19 @@
+<div class="card mb-3">
+    <div class="card-header">
+      <div class="d-flex align-items-center justify-content-between">
+        <h5>Join Hangout With ID</h5>
+        <button class="btn btn-dark float-right" [disabled]="!hangoutForm.valid" (click)="joinHangout()">Join <i class="bi bi-plus-lg"></i></button>
+      </div>
+    </div>
+    <div class="card-body">
+      <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+      <form *ngIf="!loading" [formGroup]="hangoutForm">
+        <div class="row m-3">
+          <div class="col-6">
+            <label for="name" class="mb-1">Hangout ID</label>
+            <input placeholder="Enter your hangout id" type="text" formControlName="hangoutId" class="form-control" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

@@ -5,6 +5,7 @@ import { Observable, combineLatest, map, switchMap } from 'rxjs';
 import { Restaurant } from '../models/restaurant.model';
 import { updateDoc, arrayUnion, doc } from '@firebase/firestore';
 import { User } from '../models/user.model';
+import { collection, getDocs, query, where, Firestore } from "firebase/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class HangoutService {
   public async createHangout(hangout: Hangout): Promise<boolean> {
     try {
       // Step 1: Create the document and get the doc ID
-      const docRef = await this.firestore.collection('hangouts').add(hangout);
+      const docRef = await this.firestore.collection('hangouts').add({...hangout, joinId:this.generateJoinId()});
 
       // Step 2: Update the newly created document with its ID
       await this.firestore.doc(`hangouts/${docRef.id}`).update({
@@ -49,17 +50,25 @@ export class HangoutService {
   }
 
   // Join a hangout
-  async joinHangout(joinId: string, userId: string) {
-    const hangoutRef = doc(this.firestore.firestore, 'hangouts', joinId);
-
-    try {
-      await updateDoc(hangoutRef, {
-        participants: arrayUnion(userId)
-      });
-    } catch (error) {
-      console.error('Error joining hangout:', error);
+  async joinHangout(joinId: string, userId: string): Promise<string | null> {
+    const hangoutId = await this.getHangoutIdFromJoinId(joinId);
+    if (hangoutId) {
+      const hangoutRef = doc(this.firestore.firestore, 'hangouts', hangoutId);
+      try {
+        await updateDoc(hangoutRef, {
+          participants: arrayUnion(userId)
+        });
+        return hangoutId;
+      } catch (error) {
+        console.error('Error joining hangout:', error);
+        return null;
+      }
+    } else {
+      console.error('No hangout found with the provided joinId:', joinId);
+      return null;
     }
   }
+
 
   // Cast or update a vote
   async castVote(userId: string, hangoutId: string, restaurantId: string) {
@@ -118,5 +127,18 @@ export class HangoutService {
   // Assuming you have a function to get user by ID.
   getUserById(id: string): Observable<any> {
     return this.firestore.doc<User>(`users/${id}`).valueChanges();
+  }
+
+  async getHangoutIdFromJoinId(joinId: string): Promise<string | null> {
+    const hangoutQuery = query(
+      collection(this.firestore.firestore, 'hangouts'),
+      where('joinId', '==', joinId)
+    );
+    const querySnapshot = await getDocs(hangoutQuery);
+    if (!querySnapshot.empty) {
+      return querySnapshot.docs[0].id;
+    } else {
+      return null;
+    }
   }
 }

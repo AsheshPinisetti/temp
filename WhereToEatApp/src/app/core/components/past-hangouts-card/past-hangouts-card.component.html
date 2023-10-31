@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="card-header">
+        Past Hangouts
+    </div>
+    <div class="card-body">
+        <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+        <div *ngIf="!loading">
+            <div class="text-center">
+                <p  *ngIf="!(pastHangouts$|async)?.length">No past hangouts</p>
+            </div>
+            <ul class="list-group list-group-flush" *ngIf="(pastHangouts$|async)?.length">
+                <li *ngFor="let hangout of (pastHangouts$|async)" class="list-group-item">
+                    <a href="/" class="btn btn-outline-dark btn-block">{{hangout?.name}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

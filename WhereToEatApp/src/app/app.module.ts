@@ -20,6 +20,10 @@ import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { LoadingSpinnerComponent } from './core/components/loading-spinner/loading-spinner.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HangoutPageComponent } from './pages/hangout-page/hangout-page.component';
+import { JoinHangoutComponent } from './core/components/join-hangout/join-hangout.component';
+import { NewHangoutCardComponent } from './core/components/new-hangout-card/new-hangout-card.component';
+import { ActiveHangoutsCardComponent } from './core/components/active-hangouts-card/active-hangouts-card.component';
+import { PastHangoutsCardComponent } from './core/components/past-hangouts-card/past-hangouts-card.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -72,6 +76,10 @@ const customNotifierOptions: NotifierOptions = {
     ForgotPasswordPageComponent,
     LoadingSpinnerComponent,
     HangoutPageComponent,
+    JoinHangoutComponent,
+    NewHangoutCardComponent,
+    ActiveHangoutsCardComponent,
+    PastHangoutsCardComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

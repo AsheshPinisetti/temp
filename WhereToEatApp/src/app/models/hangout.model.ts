@@ -3,6 +3,7 @@ import { User } from './user.model';
 
 export interface Hangout {
     id?: string;
+    joinId:string;
     active: boolean;
     name: string;
     location: string;
@@ -14,6 +15,7 @@ export interface Hangout {
 
 export interface HangoutWithUsers {
   id?: string;
+  joinId:string;
   active: boolean;
   name: string;
   location: string;
