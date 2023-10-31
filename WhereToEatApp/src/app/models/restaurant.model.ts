@@ -5,4 +5,5 @@ export interface Restaurant {
     address: string;
     categories: string;
     img_url: string;
+    added?: boolean;
 }

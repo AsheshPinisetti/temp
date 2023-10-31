@@ -19,6 +19,7 @@ import { ForgotPasswordPageComponent } from './pages/forgot-password-page/forgot
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { LoadingSpinnerComponent } from './core/components/loading-spinner/loading-spinner.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HangoutPageComponent } from './pages/hangout-page/hangout-page.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -70,6 +71,7 @@ const customNotifierOptions: NotifierOptions = {
     TopbarComponent,
     ForgotPasswordPageComponent,
     LoadingSpinnerComponent,
+    HangoutPageComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Hangout } from '../models/hangout.model';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, map, switchMap } from 'rxjs';
+import { Restaurant } from '../models/restaurant.model';
+import { updateDoc, arrayUnion, doc } from '@firebase/firestore';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +16,13 @@ export class HangoutService {
   // Create a new hangout
   public async createHangout(hangout: Hangout): Promise<boolean> {
     try {
-      await this.firestore.collection('hangouts').add(hangout);
+      // Step 1: Create the document and get the doc ID
+      const docRef = await this.firestore.collection('hangouts').add(hangout);
+
+      // Step 2: Update the newly created document with its ID
+      await this.firestore.doc(`hangouts/${docRef.id}`).update({
+        id: docRef.id
+      });
       return true;
     } catch (error) {
       return false;
@@ -27,13 +36,12 @@ export class HangoutService {
     return Math.random().toString(36).substr(2, 8).toUpperCase();
   }
 
-  // Add a restaurant to a hangout
-  async addRestaurant(hangoutId: string, restaurantId: string) {
-    const hangoutRef = this.firestore.collection('hangouts').doc(hangoutId);
+  async addRestaurant(hangoutId: string, restaurant: Restaurant) {
+    const hangoutRef = doc(this.firestore.firestore, 'hangouts', hangoutId);
 
     try {
-      await hangoutRef.update({
-        // restaurants: this.firestore.firestore.FieldValue.arrayUnion(restaurantId)
+      await updateDoc(hangoutRef, {
+        restaurants: arrayUnion(restaurant)
       });
     } catch (error) {
       console.error('Error adding restaurant:', error);
@@ -42,11 +50,11 @@ export class HangoutService {
 
   // Join a hangout
   async joinHangout(joinId: string, userId: string) {
-    const hangoutRef = this.firestore.collection('hangouts').doc(joinId);
+    const hangoutRef = doc(this.firestore.firestore, 'hangouts', joinId);
 
     try {
-      await hangoutRef.update({
-        // participants: this.firestore.firestore.FieldValue.arrayUnion(userId)
+      await updateDoc(hangoutRef, {
+        participants: arrayUnion(userId)
       });
     } catch (error) {
       console.error('Error joining hangout:', error);
@@ -83,5 +91,32 @@ export class HangoutService {
     return this.firestore.collection<Hangout>('hangouts', ref =>
       ref.where('active', '==', false).where('participants', 'array-contains', userId)
     ).valueChanges();
+  }
+
+  getHangout(hangoutId: string): Observable<any> {
+    return this.firestore.doc<Hangout>(`hangouts/${hangoutId}`).valueChanges().pipe(
+      switchMap(hangout => {
+        if (hangout) {
+          const createdBy$ = this.getUserById(hangout.createdBy);
+          const participants$ = combineLatest(hangout.participants.map(id => this.getUserById(id)));
+
+          return combineLatest([createdBy$, participants$]).pipe(
+            map(([createdBy, participants]) => {
+              return {
+                ...hangout,
+                createdBy,
+                participants
+              };
+            })
+          );
+        }
+        return [];
+      })
+    );
+  }
+
+  // Assuming you have a function to get user by ID.
+  getUserById(id: string): Observable<any> {
+    return this.firestore.doc<User>(`users/${id}`).valueChanges();
   }
 }

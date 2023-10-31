@@ -22,7 +22,8 @@ export class YelpService {
         url: business.url,
         address: business.location.display_address.join(", "),
         categories: business.categories.map((category: any) => category.title).join(", "),
-        img_url: business.image_url
+        img_url: business.image_url,
+        added: false,
       }));
     };
 
@@ -33,7 +34,7 @@ export class YelpService {
         })
       };
 
-      const proxiedUrl = `${this.proxyUrl}${this.baseUrl}?term=${term}&location=${location}`;
+      const proxiedUrl = `${this.proxyUrl}${this.baseUrl}?term=${term}&location=${location}&limit=50`;
 
       return this.http.get(proxiedUrl, httpOptions).pipe(
         map((response: any) => this.mapToRestaurantInterface(response.businesses))

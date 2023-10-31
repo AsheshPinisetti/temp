@@ -6,6 +6,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AuthGuard } from './auth/auth-guard';
 import { ForgotPasswordPageComponent } from './pages/forgot-password-page/forgot-password-page.component';
 import { AutoLogin } from './auth/auto-login';
+import { HangoutPageComponent } from './pages/hangout-page/hangout-page.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,11 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomePageComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'hangout/:id',
+    component: HangoutPageComponent,
     canActivate: [AuthGuard]
   },
   {

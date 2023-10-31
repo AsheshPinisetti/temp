@@ -20,7 +20,7 @@
                                 <div class="col-6">
                                     <label for="location" class="mb-1">Location</label>
                                     <div class="input-group">
-                                        <input type="text" placeholder="Enter location of the hangout" formControlName="location" class="form-control"/>
+                                        <input type="text" placeholder="Enter city, state, or zip code." formControlName="location" class="form-control"/>
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary " type="button" (click)="search(hangoutForm.value?.location)">Search</button>
                                         </div>
@@ -31,8 +31,11 @@
                                     <textarea type="text" formControlName="description" class="form-control"> </textarea>
                                 </div>
                                 <div class="col-12 mt-2">
-                                    <label for="description" class="mb-1">Restaurants <span *ngIf="hangoutForm.value?.location">in {{hangoutForm.value?.location}}</span></label>
-                                    <div class="restaurants-container row">
+                                    <label *ngIf="restaurants.length > 0" for="description" class="mb-1">Restaurants <span *ngIf="hangoutForm.value?.location">in {{hangoutForm.value?.location}}</span></label>
+                                    <div *ngIf="restaurants.length == 0">
+                                        <div class="h5">Enter a location to pick restaurants</div>
+                                    </div>
+                                    <div *ngIf="restaurants.length > 0" class="restaurants-container row">
                                         <div *ngFor="let restaurant of restaurants" class="restaurants-card my-3">
                                             <div class="card">
                                               <img [src]="restaurant.img_url" class="card-img-top" alt="{{restaurant.name}}">
@@ -40,10 +43,11 @@
                                                 <a [href]="restaurant.url" target="_blank"><h5 class="card-title">{{restaurant.name}}</h5></a>
                                                 <p class="card-text">{{restaurant.address}}</p>
                                                 <p class="card-text">{{restaurant.categories}}</p>
-                                                <a [href]="restaurant.url" target="_blank" class="btn btn-primary">Add Restaurant</a>
+                                                <button class="btn btn-primary" *ngIf="!restaurant.added" (click)="addRestaurant(restaurant)">Add Restaurant</button>
+                                                <button class="btn btn-primary" *ngIf="restaurant.added" (click)="removeRestaurant(restaurant)">Remove Restaurant</button>
                                               </div>
                                             </div>
-                                          </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
