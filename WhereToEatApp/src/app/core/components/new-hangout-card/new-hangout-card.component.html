@@ -9,11 +9,11 @@
         <app-loading-spinner *ngIf="loading"></app-loading-spinner>
         <form *ngIf="!loading" [formGroup]="hangoutForm">
             <div class="row m-3">
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="name" class="mb-1">Name</label>
                     <input placeholder="Enter your hangout name" type="text" formControlName="name" class="form-control"/>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6">
                     <label for="location" class="mb-1">Location</label>
                     <div class="input-group">
                         <input type="text" placeholder="Enter city, state, or zip code." formControlName="location" class="form-control"/>
