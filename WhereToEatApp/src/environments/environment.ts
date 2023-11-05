@@ -1,13 +1,13 @@
 export const environment = {
-    production: false,
-    firebase: {
-      apiKey: "AIzaSyDNWIOY-eK0LBuz4d8Gjb4RYfhCcyWD2Tgbro",
-      authDomain: "where-to-eat-60c46.firebaseapp.com",
-      projectId: "where-to-eat-60c46",
-      storageBucket: "where-to-eat-60c46.appspot.com",
-      messagingSenderId: "460596574420",
-      appId: "1:460596574420:web:62739fd5bb81e24f6ae341",
-      measurementId: "G-C0BGQ03SN0"
-    },
-    YELP_API_KEY: "orbrneaqzurzfQp_YlYEF5bPzQcSiFhowBTW2KzQ6HJcp1cXZx9z-dxsyjAPfbHWXRwFV5UVZoSmqpZBRvWZyFLPzVHB-D3Xu_NZE13eTfMlOGD53XpZhMWac37lHwgZXYx"
-  };
+  production: false,
+  firebase: {
+    apiKey: process.env.FIREBASE_API_KEY || '',
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN || '',
+    projectId: process.env.FIREBASE_PROJECT_ID || '',
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET || '',
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || '',
+    appId: process.env.FIREBASE_APP_ID || '',
+    measurementId: process.env.FIREBASE_MEASUREMENT_ID || ''
+  },
+  YELP_API_KEY: process.env.YELP_API_KEY || ''
+};
