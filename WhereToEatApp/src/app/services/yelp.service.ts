@@ -1,43 +1,34 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
 import { Restaurant } from '../models/restaurant.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class YelpService {
-    private readonly baseUrl = 'https://api.yelp.com/v3/businesses/search';
-    private readonly proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    private readonly apiKey = environment.YELP_API_KEY;
+  private readonly baseUrl = '/api/yelp';
 
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-    mapToRestaurantInterface = (businesses: any[]): Restaurant[] => {
-      return businesses.map(business => ({
-        id: business.id,
-        name: business.name,
-        url: business.url,
-        address: business.location.display_address.join(", "),
-        categories: business.categories.map((category: any) => category.title).join(", "),
-        img_url: business.image_url,
-        added: false,
-      }));
-    };
+  mapToRestaurantInterface = (businesses: any[]): Restaurant[] => {
+    return businesses.map(business => ({
+      id: business.id,
+      name: business.name,
+      url: business.url,
+      address: business.location.display_address.join(", "),
+      categories: business.categories.map((category: any) => category.title).join(", "),
+      img_url: business.image_url,
+      added: false,
+    }));
+  };
 
-    getRestaurants(location: string, term: string = 'restaurant'): Observable<Restaurant[]> {
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Authorization': `Bearer ${this.apiKey}`
-        })
-      };
+  getRestaurants(location: string, term: string = 'restaurant'): Observable<Restaurant[]> {
+    const url = `${this.baseUrl}?endpoint=businesses/search&term=${term}&location=${location}&limit=50`;
 
-      const proxiedUrl = `${this.proxyUrl}${this.baseUrl}?term=${term}&location=${location}&limit=50`;
-
-      return this.http.get(proxiedUrl, httpOptions).pipe(
-        map((response: any) => this.mapToRestaurantInterface(response.businesses))
-      );
-    }
+    return this.http.get(url).pipe(
+      map((response: any) => this.mapToRestaurantInterface(response.businesses))
+    );
   }
+}
