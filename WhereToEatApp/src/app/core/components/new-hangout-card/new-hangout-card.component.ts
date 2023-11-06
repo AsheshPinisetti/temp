@@ -80,8 +80,9 @@ export class NewHangoutCardComponent {
         this.restaurants = restaurants;
         this.loading = false;
       },
-      error: ()=>{
+      error: (error)=>{
         this.notificationService.showNotification('error', 'No restaurants found.');
+        console.log(error)
         this.loading = false;
       }
     })
