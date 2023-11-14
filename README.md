@@ -15,6 +15,10 @@
 
 >>>> :arrow_right_hook: ***Report, meeting minutes*** :page_with_curl:
 
+>> :file_folder: ***Deliverable_4***
+
+>>>> :arrow_right_hook: ***Report, meeting minutes*** :page_with_curl:
+
 >> :file_folder: ***Documentation***
 
 >>>> :arrow_right_hook: ***Meeting Minutes, Planning Documents, Project Reports, Source_Code*** :page_with_curl:
@@ -41,6 +45,10 @@
 >> :page_with_curl: ***Note-deliverable-1.md***
 
 >> :page_with_curl: ***Note-deliverable-2.md***
+
+>> :page_with_curl: ***Note-deliverable-3.md***
+
+>> :page_with_curl: ***Note-deliverable-4.md***
 
 >> :page_with_curl: ***README.md***
 
