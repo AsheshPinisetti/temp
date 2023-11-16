@@ -18,3 +18,17 @@
     object-fit: cover;
   }
   
+
+  .vote-btn {
+    background-color: #c75000; /* Deep orange */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.vote-btn:hover {
+    background-color: #a64000; /* A slightly darker shade for hover effect */
+}

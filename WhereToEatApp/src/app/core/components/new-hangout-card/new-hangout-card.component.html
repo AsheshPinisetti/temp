@@ -39,8 +39,8 @@
                                 <a [href]="restaurant.url" target="_blank"><h5 class="card-title">{{restaurant.name}}</h5></a>
                                 <p class="card-text">{{restaurant.address}}</p>
                                 <p class="card-text">{{restaurant.categories}}</p>
-                                <button class="btn btn-primary" *ngIf="!restaurant.added" (click)="addRestaurant(restaurant)">Add Restaurant</button>
-                                <button class="btn btn-primary" *ngIf="restaurant.added" (click)="removeRestaurant(restaurant)">Remove Restaurant</button>
+                                <button class="vote-btn" *ngIf="!restaurant.added" (click)="addRestaurant(restaurant)">Add Restaurant</button>
+                                <button class="vote-btn" *ngIf="restaurant.added" (click)="removeRestaurant(restaurant)">Remove Restaurant</button>
                               </div>
                             </div>
                         </div>

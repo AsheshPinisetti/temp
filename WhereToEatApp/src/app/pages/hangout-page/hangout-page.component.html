@@ -1,34 +1,35 @@
 <div *ngIf="!loading && hangout" class="container mt-4">
-    <div class="row">
-      <div class="col-6">
-        <h2>{{ hangout.name }}</h2>
-        <p><strong>Location:</strong> {{ hangout.location }}</p>
-        <p><strong>Description:</strong> {{ hangout.description }}</p>
-        <p><strong>Created By:</strong> {{ hangout.createdBy.displayName }}</p>
-        <p><strong>Participants:</strong> {{ participantsNames }}</p>
-      </div>
-      <div class="col-6 d-flex justify-content-center align-items-center">
-        <div class="d-flex justify-content-center align-items-center stylish-square">
-          <span class="text-center">
-            JOIN ID
-            <strong>{{hangout.joinId}}</strong>
-          </span>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="hangout-card row">
+        <div class="col-md-6 col-sm-8 col-8">
+          <h2>{{ hangout.name }}</h2>
+          <p class="text-muted"><i class="bi bi-geo-alt-fill"></i> {{ hangout.location }}</p>
+          <p class="description">{{ hangout.description }}</p>
+          <p class="created-by"><i class="bi bi-person-fill"></i> {{ hangout.createdBy.displayName }}</p>
+          <p class="participants"><i class="bi bi-people-fill"></i> {{ participantsNames }}</p>
         </div>
-      </div>
-    </div>
-
-    <h3>Restaurants</h3>
-    <div class="row">
-      <div class="col-md-4 mb-3" *ngFor="let restaurant of hangout.restaurants">
-        <div class="card">
-          <img src="{{ restaurant.img_url }}" class="card-img-top">
-          <div class="card-body">
-            <a [href]="restaurant.url" target="_blank"><h5 class="card-title">{{restaurant.name}}</h5></a>
-            <p class="card-text">{{restaurant.address}}</p>
-            <p class="card-text">{{restaurant.categories}}</p>
-            <button (click)="vote(restaurant)" class="btn btn-primary">Vote</button>
+        <div class="col-md-6 col-sm-4 col-4 d-flex justify-content-end">
+          <div class="join-id-box">
+            <span class="join-id-text">JOIN ID <strong>{{hangout.joinId}}</strong></span>
           </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <h3>Restaurants</h3>
+  <div class="row">
+    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let restaurant of hangout.restaurants">
+      <div class="restaurant-card">
+        <img src="{{ restaurant.img_url }}" alt="Restaurant Image" class="restaurant-img card-img-top">
+        <div class="restaurant-info">
+          <a [href]="restaurant.url" target="_blank"><h5 class="restaurant-title">{{restaurant.name}}</h5></a>
+          <p class="mb-1">{{restaurant.address}}</p>
+          <p class="restaurant-categories">{{restaurant.categories}}</p>
+          <button (click)="vote(restaurant)" class="vote-btn">Vote</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

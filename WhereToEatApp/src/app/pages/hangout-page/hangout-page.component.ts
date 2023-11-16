@@ -27,9 +27,9 @@ export class HangoutPageComponent {
     this.loading = true;
     this.route.params.subscribe(params => {
       const hangoutId = params['id'];
-      console.log(hangoutId)
       this.hangoutService.getHangout(hangoutId).subscribe(hangout => {
         this.hangout = hangout;
+        console.log(this.hangout.createdBy.uid);
         this.participantsNames = hangout.participants.map((user: User) => user.displayName).join(', ');
         this.loading = false;
       });
@@ -37,6 +37,7 @@ export class HangoutPageComponent {
 
     this.authService.user$.subscribe(user => {
       this.user = user
+      console.log(this.user?.uid)
     });
   }
 
