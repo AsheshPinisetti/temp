@@ -1,7 +1,11 @@
+$highlight-color: #a75c2b;
+
 /* Define the fixed height for the container */
 .restaurants-container {
     height: 500px;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: $highlight-color rgb(219, 219, 219);
 }
 
 .restaurants-card {
@@ -20,7 +24,7 @@
   
 
   .vote-btn {
-    background-color: #c75000; /* Deep orange */
+    background-color: $highlight-color; /* Deep orange */
     color: white;
     border: none;
     padding: 5px 10px;
@@ -30,5 +34,5 @@
 }
 
 .vote-btn:hover {
-    background-color: #a64000; /* A slightly darker shade for hover effect */
+    background-color: $highlight-color; /* A slightly darker shade for hover effect */
 }

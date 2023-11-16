@@ -1,8 +1,8 @@
 $primary-color: rgb(59, 57, 59); /* Deep purple */
 $text-color: #333;
 $background-color: #f9f9f9;
-$highlight-color: #c75000; /* Deep orange */
-$shadow-color: rgba(0, 0, 0, 0.1);
+$highlight-color: #a75c2b; /* Deep orange */
+$shadow-color: rgba(0, 0, 0, 0.2);
 $hover-darken-percentage: 10%;
 
 /* Global styles */
@@ -50,18 +50,27 @@ body {
 
 /* Join ID Box Styles */
 .join-id-box {
-  max-width: 200px;
-  max-height: 80px;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
   background-color: lighten($background-color, 10%);
   border-radius: 8px;
   border: #333 2px dotted;
   text-align: center;
   .join-id-text {
-    font-size: 1.5rem;
+    font-size: 1.5rem; // default font size
     font-weight: bold;
-    color: $primary-color;
+    color: $highlight-color;
+  }
+
+  // Media query for small screens
+  @media (max-width: 767px) { // 600px is a typical breakpoint for phones
+    .join-id-text {
+      font-size: 1rem; // smaller font size for small screens
+    }
   }
 }
+
 
 /* Restaurant Card Styles */
 .restaurant-card {

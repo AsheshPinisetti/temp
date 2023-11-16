@@ -1,7 +1,7 @@
 .card {
     border: none; /* Remove the default card border */
     border-radius: 8px; /* Add rounded corners */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
 
 .card-header {
@@ -28,6 +28,7 @@
 
 $enable-rounded: false;
 $primary: #292b2c;
+$highlight-color: #a75c2b;
 
 @import 'bootstrap/scss/bootstrap';
 @import 'node_modules/angular-notifier/styles'
