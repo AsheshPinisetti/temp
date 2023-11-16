@@ -1,5 +1,5 @@
 # **Project Details** :sparkles:
-- **Deliverable_2**: 
+- **Deliverable_3**: 
   - [Report](./Deliverable_3/Report.pdf)
  
 - **Documentation**: 

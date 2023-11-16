@@ -1,0 +1,43 @@
+DELIVERABLE-4
+
+Meeting date and time – Tuesday, October 31 2023 3:30 PM America (GMT-6:00)
+
+List of attendees – 9
+•	Ibrahim Alkuwaifi
+•	Sai Kumar Gurram (11613804)
+•	Teja Peddi (11647512)
+•	Ashesh Kumar Pinisetti (11649062)
+•	Mohammad Khaja Moinuddin (11603687)
+•	Vishal Kandunuri (11666743)
+•	Gouthami Gongidi (11647161)
+•	Mallikarjun Narra (11656443)
+•	Mohammed Abdul Wahid (11600299)
+
+Agenda items or topics discussed – 
+• Deploying Application
+• Making and joining a hangout
+• Adding resturants from Yelp API
+• Generate project URL
+• Adding Firestone
+•	Implementing Sign Up
+•	Implementing Sign In
+•	Adding Fire Authentication
+• Implementing Password Reset
+•	Implementing Email Verification
+•	Adding Firebase
+
+Action items or tasks assigned – 
+Report for Deliverable-4
+User Manual: Mallikarjun Narra
+Feedback Recieved during code inspection: Vishal Kandunuri
+UML Design - Class,Sequence, and Use Case Diagram: Teja Peddi
+Requirements and Code Functionality: Ibrahim Alkuwaifi
+Instructions to compile/run the program: Ashesh Kumar Pinisetti
+Test Cases (unit tests) : Sai Kumar Gurram
+What has been accomplished and Gantt Chart: Mohammad Khaja Moinuddin
+Meeting Minutes : Mohammed Abdul Wahid
+Use Case Diagram: Gouthami Gongidi
+
+Decisions made during the meeting – 
+• Using Yelp API to add returants
+• Voting functionality
