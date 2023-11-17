@@ -74,6 +74,7 @@ body {
 
 /* Restaurant Card Styles */
 .restaurant-card {
+  position: relative;
   box-shadow: 0 4px 8px $shadow-color;
   transition: transform 0.3s ease;
   &:hover {
@@ -117,6 +118,18 @@ body {
     background-color: darken($highlight-color, $hover-darken-percentage);
   }
 }
+
+.vote-count-overlay {
+  position: absolute; /* Absolute position to place it over the image */
+  bottom: 10px; /* Position it at the bottom of the image */
+  right: 10px; /* Position it to the right */
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  color: white; /* White text */
+  padding: 5px 10px; /* Padding for aesthetic spacing */
+  border-radius: 5px; /* Rounded corners */
+  font-weight: bold; /* Bold text */
+}
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

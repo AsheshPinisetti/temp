@@ -29,6 +29,7 @@
           <p class="restaurant-categories">{{restaurant.categories}}</p>
           <button (click)="vote(restaurant)" class="vote-btn">Vote</button>
         </div>
+        <div class="vote-count-overlay">{{restaurant.votes?.length}}</div> <!-- Vote count overlay -->
       </div>
     </div>
   </div>

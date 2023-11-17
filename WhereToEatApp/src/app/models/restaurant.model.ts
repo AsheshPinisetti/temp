@@ -6,4 +6,5 @@ export interface Restaurant {
     categories: string;
     img_url: string;
     added?: boolean;
+    votes?: string[]
 }

@@ -29,7 +29,7 @@ export class HangoutPageComponent {
       const hangoutId = params['id'];
       this.hangoutService.getHangout(hangoutId).subscribe(hangout => {
         this.hangout = hangout;
-        console.log(this.hangout.createdBy.uid);
+        console.log(hangout);
         this.participantsNames = hangout.participants.map((user: User) => user.displayName).join(', ');
         this.loading = false;
       });

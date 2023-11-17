@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Hangout } from '../models/hangout.model';
-import { Observable, combineLatest, map, switchMap } from 'rxjs';
+import { Observable, catchError, combineLatest, first, map, switchMap } from 'rxjs';
 import { Restaurant } from '../models/restaurant.model';
 import { updateDoc, arrayUnion, doc } from '@firebase/firestore';
 import { User } from '../models/user.model';
@@ -70,24 +70,50 @@ export class HangoutService {
   }
 
 
-  // Cast or update a vote
-  async castVote(userId: string, hangoutId: string, restaurantId: string) {
-    const voteRef = this.firestore.collection('votes').doc(`${userId}_${hangoutId}`);
 
-    try {
-      const voteSnapshot = await voteRef.get().toPromise();
+  castVote(userId: string, hangoutId: string, restaurantId: string) {
+    const hangoutRef = this.firestore.collection('hangouts').doc(hangoutId);
 
-      if (voteSnapshot?.exists) {
-        // Update existing vote
-        await voteRef.update({ restaurantId });
-      } else {
-        // Cast new vote
-        const voteData = { userId, hangoutId, restaurantId };
-        await voteRef.set(voteData);
-      }
-    } catch (error) {
-      console.error('Error casting vote:', error);
-    }
+    hangoutRef.get().pipe(
+      first(),
+      map(hangoutSnapshot => {
+        if (!hangoutSnapshot.exists) {
+          throw new Error('Hangout not found');
+        }
+
+        const hangoutData = hangoutSnapshot.data() as Hangout;
+        if (!hangoutData.restaurants) {
+          throw new Error('No restaurants found in hangout');
+        }
+
+        // Remove existing votes for this user in all restaurants
+        hangoutData.restaurants = hangoutData.restaurants.map((restaurant): Restaurant => ({
+          ...restaurant,
+          votes: restaurant.votes?.filter(vote => vote !== userId) || []
+        }));
+
+        // Find the restaurant and add the new vote
+        const restaurantIndex = hangoutData.restaurants.findIndex(r => r.id === restaurantId);
+        if (restaurantIndex === -1) {
+          throw new Error('Restaurant not found in hangout');
+        }
+
+        hangoutData.restaurants[restaurantIndex].votes = hangoutData.restaurants[restaurantIndex].votes || [];
+        hangoutData.restaurants[restaurantIndex].votes?.push(userId);
+
+        return hangoutData;
+      }),
+      switchMap(hangoutData => {
+        return hangoutRef.update({ restaurants: hangoutData.restaurants });
+      }),
+      catchError(error => {
+        console.error('Error casting vote:', error);
+        throw error;
+      })
+    ).subscribe({
+      error: err => console.error('Error in subscription:', err)
+      // You can also handle success here if needed
+    });
   }
 
   getActiveHangoutsForUser(userId: string | undefined): Observable<Hangout[]> {
