@@ -20,6 +20,7 @@ export class YelpService {
       address: business.location.display_address.join(", "),
       categories: business.categories.map((category: any) => category.title).join(", "),
       img_url: business.image_url,
+      display_phone: business.display_phone,
       added: false,
     }));
   };

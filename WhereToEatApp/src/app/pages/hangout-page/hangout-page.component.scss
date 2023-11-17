@@ -4,6 +4,8 @@ $background-color: #f9f9f9;
 $highlight-color: #a75c2b; /* Deep orange */
 $shadow-color: rgba(0, 0, 0, 0.2);
 $hover-darken-percentage: 10%;
+$danger-color: rgb(220, 53, 69);
+
 
 /* Global styles */
 body {
@@ -103,6 +105,10 @@ body {
       margin-bottom: 1rem;
     }
   }
+  i.bi {
+    margin-right: 5px; /* Adjust if using a different icon set */
+    color: $highlight-color;
+  }
 }
 
 /* Button Styles */
@@ -117,6 +123,13 @@ body {
   &:hover {
     background-color: darken($highlight-color, $hover-darken-percentage);
   }
+
+  &:disabled {
+    background-color: lighten($highlight-color, 20%); // Lighten the button color when disabled
+    color: darken(white, 10%); // Optional: darken the text color if needed
+    cursor: not-allowed; // Change cursor to indicate the button is disabled
+    opacity: 0.7; // Reduce opacity or any other styling to indicate it's not active
+  }
 }
 
 .vote-count-overlay {
@@ -128,6 +141,33 @@ body {
   padding: 5px 10px; /* Padding for aesthetic spacing */
   border-radius: 5px; /* Rounded corners */
   font-weight: bold; /* Bold text */
+}
+
+.end-hangout-btn {
+  background-color: $danger-color; // Assign a color that indicates an action like ending something
+  color: white;
+  border: none;
+  padding: 2px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($danger-color, $hover-darken-percentage);
+  }
+
+  &:disabled {
+    background-color: lighten($danger-color, 20%);
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+.hr {
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, rgba($primary-color, 0), $primary-color, rgba($primary-color, 0)); /* Fading effect with primary color */
+  margin: 20px 0; /* Provide some vertical spacing */
 }
 
 

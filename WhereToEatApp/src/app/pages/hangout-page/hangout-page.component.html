@@ -2,9 +2,13 @@
   <div class="row p-3">
     <div class="col-md-12">
       <div class="hangout-card row">
-        <div class="col-md-6 col-sm-8 col-8">
+        <div class="col-md-12 d-flex justify-content-between mb-1">
           <h2>{{ hangout.name }}</h2>
-          <p class="text-muted"><i class="bi bi-geo-alt-fill"></i> {{ hangout.location }}</p>
+          <button (click)="endHangout()" *ngIf="hangout.active && isCreator()" class="end-hangout-btn">End Hangout</button>
+        </div>
+        <hr class="hr" />
+        <div class="col-md-6 col-sm-8 col-8">
+          <p class="text-muted mb-0"><i class="bi bi-geo-alt-fill"></i> {{ hangout.location }}</p>
           <p class="description">{{ hangout.description }}</p>
           <p class="created-by"><i class="bi bi-person-fill"></i> {{ hangout.createdBy.displayName }}</p>
           <p class="participants"><i class="bi bi-people-fill"></i> {{ participantsNames }}</p>
@@ -13,6 +17,7 @@
           <div class="join-id-box">
             <span class="join-id-text">JOIN ID <strong>{{hangout.joinId}}</strong></span>
           </div>
+
         </div>
       </div>
     </div>
@@ -25,11 +30,27 @@
         <img src="{{ restaurant.img_url }}" alt="Restaurant Image" class="restaurant-img card-img-top">
         <div class="restaurant-info">
           <a [href]="restaurant.url" target="_blank"><h5 class="restaurant-title">{{restaurant.name}}</h5></a>
-          <p class="mb-1">{{restaurant.address}}</p>
-          <p class="restaurant-categories">{{restaurant.categories}}</p>
-          <button (click)="vote(restaurant)" class="vote-btn">Vote</button>
+
+          <p class="mb-1 d-flex align-items-start" *ngIf="restaurant.address">
+            <i class="bi bi-geo-alt-fill mr-2"></i>
+            <a href="https://www.google.com/maps/search/?api=1&query={{ getEncodedAddress(restaurant.address) }}" target="_blank">{{ restaurant.address }}</a>
+          </p>
+
+
+          <p class="mb-1" *ngIf="restaurant.display_phone">
+            <i class="bi bi-telephone-fill"></i>
+            <a [href]="'tel:' + restaurant?.display_phone">{{ restaurant?.display_phone }}</a>
+          </p>
+
+          <p class="restaurant-categories" *ngIf="restaurant.categories">
+            <i class="bi bi-tags-fill"></i>
+            {{restaurant.categories}}
+          </p>
+
+          <button *ngIf="hangout.active" (click)="vote(restaurant)" class="vote-btn">Vote</button>
+          <button *ngIf="!hangout.active" class="vote-btn" disabled>Hangout Ended</button>
         </div>
-        <div class="vote-count-overlay">{{restaurant.votes?.length}}</div> <!-- Vote count overlay -->
+        <div class="vote-count-overlay">{{restaurant.votes?.length || 0}}</div> <!-- Vote count overlay -->
       </div>
     </div>
   </div>

@@ -16,6 +16,8 @@ export class HangoutService {
 
   // Create a new hangout
   public async createHangout(hangout: Hangout): Promise<boolean> {
+
+    console.log(hangout);
     try {
       // Step 1: Create the document and get the doc ID
       const docRef = await this.firestore.collection('hangouts').add({...hangout, joinId:this.generateJoinId()});
@@ -26,6 +28,7 @@ export class HangoutService {
       });
       return true;
     } catch (error) {
+      console.log(error)
       return false;
     }
   }
@@ -165,6 +168,18 @@ export class HangoutService {
       return querySnapshot.docs[0].id;
     } else {
       return null;
+    }
+  }
+
+  public async deactivateHangout(hangoutId: string): Promise<boolean> {
+    const hangoutRef = this.firestore.collection('hangouts').doc(hangoutId);
+    try {
+      await hangoutRef.update({ active: false });
+      console.log(`Hangout with ID ${hangoutId} has been deactivated.`);
+      return true;
+    } catch (error) {
+      console.error('Error deactivating hangout:', error);
+      return true;
     }
   }
 }

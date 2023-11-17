@@ -10,7 +10,7 @@
             </div>
             <ul class="list-group list-group-flush" *ngIf="(pastHangouts$|async)?.length">
                 <li *ngFor="let hangout of (pastHangouts$|async)" class="list-group-item">
-                    <a href="/" class="btn btn-outline-dark btn-block">{{hangout?.name}}</a>
+                    <a [routerLink]="['/hangout', hangout.id]" class="btn btn-outline-dark btn-block">{{hangout?.name}}</a>
                 </li>
             </ul>
         </div>
