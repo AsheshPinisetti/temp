@@ -17,9 +17,35 @@
           <div class="join-id-box">
             <span class="join-id-text">JOIN ID <strong>{{hangout.joinId}}</strong></span>
           </div>
-
         </div>
-      </div>
+
+        <div  *ngIf="winnerRestaurant" class="col-md-6 mb-3">
+          <h4 class="mb-3 mt-3">Winner Restaurant</h4>
+          <div class="restaurant-card">
+            <img src="{{ winnerRestaurant.img_url }}" alt="Restaurant Image" class="restaurant-img">
+            <div class="restaurant-info">
+              <a [href]="winnerRestaurant.url" target="_blank"><h5 class="restaurant-title">{{winnerRestaurant.name}}</h5></a>
+
+              <p class="mb-1 d-flex align-items-start" *ngIf="winnerRestaurant.address">
+                <i class="bi bi-geo-alt-fill mr-2"></i>
+                <a href="https://www.google.com/maps/search/?api=1&query={{ getEncodedAddress(winnerRestaurant.address) }}" target="_blank">{{ winnerRestaurant.address }}</a>
+              </p>
+
+
+              <p class="mb-1" *ngIf="winnerRestaurant.display_phone">
+                <i class="bi bi-telephone-fill"></i>
+                <a [href]="'tel:' + winnerRestaurant.display_phone">{{ winnerRestaurant?.display_phone }}</a>
+              </p>
+
+              <p class="restaurant-categories" *ngIf="winnerRestaurant.categories">
+                <i class="bi bi-tags-fill"></i>
+                {{winnerRestaurant.categories}}
+              </p>
+            </div>
+            <div class="vote-count-overlay">{{winnerRestaurant.votes?.length || 0}}</div> <!-- Vote count overlay -->
+          </div>
+        </div>
+        </div>
     </div>
   </div>
 
@@ -27,7 +53,7 @@
   <div class="row">
     <div class="col-lg-4 col-md-6 mb-4" *ngFor="let restaurant of hangout.restaurants">
       <div class="restaurant-card">
-        <img src="{{ restaurant.img_url }}" alt="Restaurant Image" class="restaurant-img card-img-top">
+        <img src="{{ restaurant.img_url }}" alt="Restaurant Image" class="restaurant-img">
         <div class="restaurant-info">
           <a [href]="restaurant.url" target="_blank"><h5 class="restaurant-title">{{restaurant.name}}</h5></a>
 
